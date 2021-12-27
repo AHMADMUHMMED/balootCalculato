@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>344343295643-khdhfnngjdp85teop6kdtl9bhu9f1qft.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.344343295643-khdhfnngjdp85teop6kdtl9bhu9f1qft</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxU77QbEBFpZqYt2K3FgQOgeyAKzZcTMM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>344343295643</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Ahmad.balootCalculato</string>
+	<key>PROJECT_ID</key>
+	<string>balootcalculato</string>
+	<key>STORAGE_BUCKET</key>
+	<string>balootcalculato.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:344343295643:ios:b0eee51f7a313c29e0b83e</string>
+</dict>
+</plist>
