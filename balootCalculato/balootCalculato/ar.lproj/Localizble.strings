@@ -1,0 +1,15 @@
+/* 
+  Localizble.strings
+  balootCalculato
+
+  Created by Ahmad Barqi on 22/05/1443 AH.
+  
+*/
+"changethelanguage" = "Language English";
+"balootCalculato" = "حاسبة بلوت";
+"register" = "تسجيل";
+"login" = "دخول";
+"name" = "الاسم";
+"email" = "البريد الالكتروني";
+"password" =  "كلمة السر";
+"password" = "كلمة السر";

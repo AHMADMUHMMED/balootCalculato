@@ -381,14 +381,6 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="1195.3125"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Ya0-hE-gI5">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="40y-Nn-43b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="M3V-7F-E94" sceneMemberID="viewController"/>
-            </objects>
-            <point key="canvasLocation" x="3048" y="1217"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="hxp-xc-Kom">
             <objects>
@@ -412,8 +404,8 @@
             <objects>
                 <viewController id="TYW-5p-Qet" customClass="BalootCalculato" customModule="balootCalculato" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6jI-nc-dxY"/>
-                        <viewControllerLayoutGuide type="bottom" id="ag9-ek-Od7"/>
+                        <viewControllerLayoutGuide type="top" id="6jI-nc-dxY" userLabel="top layout"/>
+                        <viewControllerLayoutGuide type="bottom" id="ag9-ek-Od7" userLabel="Botton Layout"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xk3-1q-w87">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
