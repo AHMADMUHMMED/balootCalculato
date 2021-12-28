@@ -31,25 +31,32 @@ userImageView.isUserInteractionEnabled = true
     
     @IBOutlet weak var psswordTextField: UITextField!
     
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+
+    @IBOutlet weak var passwordResetTextField: UITextField!
     
-    
-//    Translation الترجمة
+    //    Translation الترجمة
+   
+   
     @IBOutlet weak var nameLebl: UILabel!
     @IBOutlet weak var emailLebl: UILabel!
     @IBOutlet weak var passwordLebl: UILabel!
-    @IBOutlet weak var confirmPasswordLebl: UILabel!
-    
-    
+    @IBOutlet weak var passwordResetLebl: UILabel!
+    @IBOutlet weak var registerBut: UIButton!
+    @IBOutlet weak var orLebl: UILabel!
+    @IBOutlet weak var loginBut: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //    Translation الترجمة
+  
+//    Translation الترجمة
 nameLebl.text = "name".localiz
 emailLebl.text = "email".localiz
 passwordLebl.text = "password".localiz
-confirmPasswordLebl.text = "password".localiz
+       passwordResetLebl.text = "password reset".localiz
+        orLebl.text = "or".localiz
+        registerBut.setTitle("register".localiz, for: .normal)
         
-       
+        loginBut.setTitle("login".localiz, for: .normal)
+
     }
     
     @IBAction func byClickingRegister(_ sender: Any) {
@@ -59,17 +66,92 @@ confirmPasswordLebl.text = "password".localiz
            let name = nameTextField.text,
            let email = emailTextField.text,
            let password = psswordTextField.text,
-           let confirmPassword = confirmPasswordTextField.text,
-           password == confirmPassword {
+           let passwordReset = passwordResetTextField.text,
+           password == passwordReset {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-            
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    print("Registration Auth Error",error.localizedDescription)
+                }
+                if let authResult = authResult {
+                    let storageRef = Storage.storage().reference(withPath: "users/\(authResult.user.uid)")
+                    let uploadMeta = StorageMetadata.init()
+                    uploadMeta.contentType = "image/jpeg"
+                    storageRef.putData(imageData, metadata: uploadMeta) { storageMeta, error in
+                        if let error = error {
+                            print("Registration Storage Error",error.localizedDescription)
+                        }
+                        storageRef.downloadURL { url, error in
+                            if let error = error {
+                                print("Registration Storage Download Url Error",error.localizedDescription)
+                            }
+                            if let url = url {
+                                print("URL",url.absoluteString)
+                                let db = Firestore.firestore()
+                                let userData: [String:String] = [
+                                    "id":authResult.user.uid,
+                                    "name":name,
+                                    "email":email,
+                                    "imageUrl":url.absoluteString
+                                ]
+                                db.collection("users").document(authResult.user.uid).setData(userData) { error in
+                                    if let error = error {
+                                        print("Registration Database error",error.localizedDescription)
+                                    }else {
+                                        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
+                                            vc.modalPresentationStyle = .fullScreen
+                                            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                                            self.present(vc, animated: true, completion: nil)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
+        
     }
     
     
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    @objc func selectImage() {
+        showAlert()
+    }
     
-    
-    
-    
+    func showAlert() {
+        let alert = UIAlertController(title: "choose Profile Picture", message: "where do you want to pick your image from?", preferredStyle: .actionSheet)
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { Action in
+            self.getImage(from: .camera)
+        }
+        let galaryAction = UIAlertAction(title: "photo Album", style: .default) { Action in
+            self.getImage(from: .photoLibrary)
+        }
+        let dismissAction = UIAlertAction(title: "Cancle", style: .destructive) { Action in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cameraAction)
+        alert.addAction(galaryAction)
+        alert.addAction(dismissAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    func getImage( from sourceType: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickercontroller, animated: true, completion: nil)
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let chosenImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return}
+        userImageView.image = chosenImage
+        dismiss(animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

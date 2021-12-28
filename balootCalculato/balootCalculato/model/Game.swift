@@ -21,6 +21,8 @@ struct Game {
             let createdAt = dict["createdAt"] as? Timestamp{
             self.imageUrl = imageUrl
             self.createdAt = createdAt
+            self.winnerId = winnerId
+            
         }
         self.id = id
         self.user = user

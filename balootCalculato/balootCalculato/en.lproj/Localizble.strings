@@ -5,11 +5,18 @@
   Created by Ahmad Barqi on 22/05/1443 AH.
   
 */
-"changethelanguage" = "اللغة العربية";
+"changethelanguage" = " العربية";
 "balootCalculato" = "Baloot Calculato";
 "register" = "Register";
 "login" = "Login";
 "name" = "Name";
 "email" = "Email";
 "password" = "password";
-"password" = "password";
+"password reset" = "password reset";
+"or" = "or";
+"us" = "us";
+"them" = "them";
+"Calculate" = "Calculate";
+"back" = "back";
+"new Game" = "new Game";
+"night" = "night";
