@@ -27,12 +27,10 @@ class LandingViewController: UIViewController {
 
     @IBAction func changeTheLanguageBut(_ sender: Any) {
         
-        
         let currentLang = Locale.current.languageCode
-        let nweLanguage = currentLang == "en" ? "ar" : "en"
-        UserDefaults.standard.setValue([nweLanguage], forKey: "AppleLanguages")
-      UserDefaults.standard.setValue([nweLanguage], forKey: "AppleLanguages")
-      exit(0)
+        let newLanguage = currentLang == "en" ? "ar" : "en"
+        UserDefaults.standard.setValue([newLanguage], forKey: "AppleLanguages")
+       exit(0)
 
     }
     

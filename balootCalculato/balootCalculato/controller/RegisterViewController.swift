@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 class RegisterViewController: UIViewController {
-let imagePickercontroller = UIImagePickerController()
+let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var userImageView: UIImageView!{
@@ -56,6 +56,7 @@ passwordLebl.text = "password".localiz
         registerBut.setTitle("register".localiz, for: .normal)
         
         loginBut.setTitle("login".localiz, for: .normal)
+       imagePickerController.delegate = self
 
     }
     
@@ -142,8 +143,8 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     func getImage( from sourceType: UIImagePickerController.SourceType) {
         
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
-            imagePickerController.sourceType = sourceType
-            self.present(imagePickercontroller, animated: true, completion: nil)
+imagePickerController.sourceType = sourceType
+    self.present(imagePickerController, animated: true, completion: nil)
         }
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

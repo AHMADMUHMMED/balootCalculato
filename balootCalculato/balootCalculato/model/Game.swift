@@ -18,11 +18,12 @@ struct Game {
     init(dict:[String:Any],id:String,user:User) {
         if let winnerId = dict["winnerId"] as? String,
            let imageUrl = dict["imageUrl"] as? String,
+           let result = dict["result"] as? String,
             let createdAt = dict["createdAt"] as? Timestamp{
             self.imageUrl = imageUrl
             self.createdAt = createdAt
             self.winnerId = winnerId
-            
+            self.result = result
         }
         self.id = id
         self.user = user

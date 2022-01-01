@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func handleLogin(_ sender: Any) {
-        if let email = emailTextField.text,
+    if let email = emailTextField.text,
            let password = passwordTextField.text {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
