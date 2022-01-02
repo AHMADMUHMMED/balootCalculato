@@ -5,9 +5,9 @@
 //  Created by Ahmad Barqi on 28/05/1443 AH.
 //
 //
-//import UIKit
-//import Firebase
-//class HomeViewController: UIViewController {
+import UIKit
+import Firebase
+class HomeViewController: UIViewController {
 //    var game = [Game]()
 //    var selectedGame:Game?
 //    var selectedGameImage:UIImage?
@@ -109,19 +109,19 @@
 //        //            }
 //        //        }
 //        //    }
-//        @IBAction func handleLogout(_ sender: Any) {
-//            do {
-//                try Auth.auth().signOut()
-//                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationController") as? UINavigationController {
-//                    vc.modalPresentationStyle = .fullScreen
-//                    self.present(vc, animated: true, completion: nil)
-//                }
-//            } catch  {
-//                print("ERROR in signout",error.localizedDescription)
-//            }
-//
-//        }
-//
+        @IBAction func handleLogout(_ sender: Any) {
+            do {
+                try Auth.auth().signOut()
+                if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LandingNavigationController") as? UINavigationController {
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+            } catch  {
+                print("ERROR in signout",error.localizedDescription)
+            }
+
+        }
+
 //        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //            if let identifier = segue.identifier {
 //                if identifier == "toPostVC" {
@@ -166,4 +166,4 @@
 //
 //            }
 //        }
-//    }
+    }

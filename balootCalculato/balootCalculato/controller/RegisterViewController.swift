@@ -21,8 +21,8 @@ let imagePickerController = UIImagePickerController()
         userImageView.layer.cornerRadius = userImageView.bounds.height / 2
 userImageView.layer.masksToBounds = true
 userImageView.isUserInteractionEnabled = true
-//        let tabGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
-//        userImageView.addGestureRecognizer(tabGesture)
+       let tabGesture = UITapGestureRecognizer(target: self, action: #selector(selectImage))
+        userImageView.addGestureRecognizer(tabGesture)
     }
     }
     @IBOutlet weak var nameTextField: UITextField!
