@@ -51,7 +51,7 @@
                 <outlet property="themLebl" destination="k0e-EY-Oxs" id="Kr7-FO-qDT"/>
                 <outlet property="usLebl" destination="syA-tj-inc" id="4Qk-8y-5RR"/>
             </connections>
-            <point key="canvasLocation" x="185.59999999999999" y="93.553223388305852"/>
+            <point key="canvasLocation" x="185.50724637681162" y="93.080357142857139"/>
         </tableViewCell>
     </objects>
 </document>

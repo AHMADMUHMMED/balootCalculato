@@ -3,10 +3,10 @@
 //  balootCalculato
 //
 //  Created by Ahmad Barqi on 25/05/1443 AH.
-//
+
 
 import UIKit
-
+import Firebase
 class ScoreCell: UITableViewCell {
 
     @IBOutlet weak var usLebl: UILabel!

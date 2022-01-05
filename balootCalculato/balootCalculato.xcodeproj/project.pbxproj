@@ -19,6 +19,8 @@
 		7B2DC41227778CF7007A0B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2DC41127778CF7007A0B56 /* Assets.xcassets */; };
 		7B2DC41527778CF7007A0B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2DC41327778CF7007A0B56 /* LaunchScreen.storyboard */; };
 		7B2F66562780D499002A958B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F66552780D499002A958B /* HomeViewController.swift */; };
+		7B4ADEB82785C116008648A5 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB62785C116008648A5 /* GameCell.swift */; };
+		7B4ADEB92785C116008648A5 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB72785C116008648A5 /* GameCell.xib */; };
 		7B52EA7C277795CB00D5D862 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EA7B277795CB00D5D862 /* LandingViewController.swift */; };
 		7B52EA7E277795EA00D5D862 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EA7D277795EA00D5D862 /* RegisterViewController.swift */; };
 		7B52EA802777960600D5D862 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EA7F2777960600D5D862 /* LoginViewController.swift */; };
@@ -49,6 +51,8 @@
 		7B2DC41427778CF7007A0B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B2DC41627778CF7007A0B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2F66552780D499002A958B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7B4ADEB62785C116008648A5 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
+		7B4ADEB72785C116008648A5 /* GameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCell.xib; sourceTree = "<group>"; };
 		7B52EA7B277795CB00D5D862 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		7B52EA7D277795EA00D5D862 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7B52EA7F2777960600D5D862 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 			children = (
 				7B0F4D28277C7C4F00409A50 /* ScoreCell.xib */,
 				7B0F4D30277C980700409A50 /* ResultCell.xib */,
+				7B4ADEB72785C116008648A5 /* GameCell.xib */,
 				7B2DC40E27778CF3007A0B56 /* Main.storyboard */,
 			);
 			path = view;
@@ -142,8 +147,9 @@
 				7B52EA7F2777960600D5D862 /* LoginViewController.swift */,
 				7B52EAB12779DED200D5D862 /* BalootCalculato.swift */,
 				7B2F66552780D499002A958B /* HomeViewController.swift */,
-				7B0F4D27277C7C4F00409A50 /* ScoreCell.swift */,
+				7B4ADEB62785C116008648A5 /* GameCell.swift */,
 				7B0F4D2F277C980700409A50 /* ResultCell.swift */,
+				7B0F4D27277C7C4F00409A50 /* ScoreCell.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				7B52EA972778656800D5D862 /* GoogleService-Info.plist in Resources */,
 				7B0F4D2A277C7C4F00409A50 /* ScoreCell.xib in Resources */,
 				7B52EAAA27788C9700D5D862 /* Localizble.strings in Resources */,
+				7B4ADEB92785C116008648A5 /* GameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +251,7 @@
 				7B0F4D2E277C94CE00409A50 /* UIView-Ext.swift in Sources */,
 				7B52EA93277862F400D5D862 /* ImageView.swift in Sources */,
 				7B52EAB22779DED300D5D862 /* BalootCalculato.swift in Sources */,
+				7B4ADEB82785C116008648A5 /* GameCell.swift in Sources */,
 				7B52EA802777960600D5D862 /* LoginViewController.swift in Sources */,
 				7B0F4D2C277C8CE200409A50 /* Gamereference.swift in Sources */,
 				7B2F66562780D499002A958B /* HomeViewController.swift in Sources */,

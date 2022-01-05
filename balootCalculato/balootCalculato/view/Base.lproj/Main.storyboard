@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nie-KU-0K6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -138,8 +138,25 @@
                     <view key="view" contentMode="scaleToFill" id="wLC-Ab-ITw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Egs-hg-w3j">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Ne5-ce-Hc4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ne5-ce-Hc4" firstAttribute="bottom" secondItem="Egs-hg-w3j" secondAttribute="bottom" id="J5e-Om-UWF"/>
+                            <constraint firstItem="Egs-hg-w3j" firstAttribute="leading" secondItem="Ne5-ce-Hc4" secondAttribute="leading" id="Jkr-ay-ybh"/>
+                            <constraint firstItem="Ne5-ce-Hc4" firstAttribute="trailing" secondItem="Egs-hg-w3j" secondAttribute="trailing" id="reC-nB-CtU"/>
+                            <constraint firstItem="Egs-hg-w3j" firstAttribute="top" secondItem="Ne5-ce-Hc4" secondAttribute="top" id="vBX-sf-WeA"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ryx-59-Yoj">
@@ -155,10 +172,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gamesTableView" destination="Egs-hg-w3j" id="ibV-tu-HZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uXP-Kl-Wb0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1764" y="1182"/>
+            <point key="canvasLocation" x="1763.7681159420292" y="1181.9196428571429"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="F91-8l-H8t">
@@ -698,10 +718,14 @@
                                                 <real key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="darkModeToggle:" destination="EZy-1R-Qwd" eventType="touchUpInside" id="q7u-GL-CyZ"/>
-                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4b2-cS-FqB">
+                                        <rect key="frame" x="159" y="7" width="100" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -836,7 +860,19 @@
                             <constraint firstAttribute="bottom" secondItem="Rl9-Cs-ASM" secondAttribute="bottom" id="wK5-iX-99J"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tW4-kz-yyq"/>
+                    <navigationItem key="navigationItem" id="tW4-kz-yyq">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="DBu-Lg-eOL">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="tzf-4F-HLP">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="postButeen:" destination="EZy-1R-Qwd" eventType="touchUpInside" id="8JI-DM-rsZ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundImg" destination="Rl9-Cs-ASM" id="Gtc-JQ-BqX"/>
                         <outlet property="btnsBackgroundView" destination="Zfp-QH-sL9" id="GUs-D0-27i"/>
@@ -844,6 +880,7 @@
                         <outlet property="distributerBtn" destination="kRi-4c-TEs" id="Xbk-ul-65M"/>
                         <outlet property="newGameBut" destination="IJh-gl-9DB" id="GvH-nL-2ws"/>
                         <outlet property="redoBut" destination="KX0-OT-KBG" id="p0b-WZ-BrD"/>
+                        <outlet property="saveBut" destination="J2l-32-lMG" id="nlX-Hk-LWS"/>
                         <outlet property="tableView" destination="87s-67-i03" id="3LE-Lj-UTn"/>
                         <outlet property="themCont" destination="RLW-81-hk0" id="Url-M1-Ld4"/>
                         <outlet property="themLebl" destination="3Wk-O8-NTb" id="JDo-vp-eCL"/>
@@ -861,6 +898,7 @@
                         <outlet property="usTVLbl" destination="RZK-oZ-J2M" id="AaK-I4-tm2"/>
                         <outlet property="usTextField" destination="dqC-Ax-VRv" id="vy6-Oh-TKa"/>
                         <outlet property="usTopLbl" destination="D2r-mY-nGo" id="8Ap-zZ-Ssz"/>
+                        <outlet property="winnerNameLabel" destination="4b2-cS-FqB" id="i6v-5w-nBu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vyZ-A2-2wL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -888,7 +926,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="6ZZ-UU-cZq"/>
-        <segue reference="0Rg-hq-5Ws"/>
+        <segue reference="mpr-w6-9Yr"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Background" width="375" height="667"/>

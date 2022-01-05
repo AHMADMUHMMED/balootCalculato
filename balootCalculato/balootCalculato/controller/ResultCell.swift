@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 class ResultCell: UITableViewCell {
 
     @IBOutlet weak var usLebl: UILabel!

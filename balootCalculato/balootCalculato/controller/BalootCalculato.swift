@@ -11,8 +11,10 @@ import Firebase
 
 
 class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var selectedPost:Game?
     @IBOutlet weak var tableView: UITableView!
-    
+
+    @IBOutlet weak var winnerNameLabel: UILabel!
     @IBOutlet weak var usTextField: UITextField!
     @IBOutlet weak var themTextField: UITextField!
     
@@ -30,6 +32,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var redoBut: UIButton!
     var redoMode = false
     
+    @IBOutlet weak var saveBut: UIButton!
     
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var usTopLbl: UILabel!
@@ -55,7 +58,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var distributerBtn: UIButton!
     
-    
+ 
     let calculator = gameReference.instance
     
     override func viewDidLoad() {
@@ -77,6 +80,16 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         updateUI()
         
+        
+      
+        // to select winner
+        if let player1 = usLebl.text, let player2 = themLebl.text {
+            if player1 > player2 {
+                winnerNameLabel.text = themTopLbl.text
+            }else{
+                winnerNameLabel.text = usTopLbl.text
+            }
+        }
         
     }
     
@@ -103,6 +116,87 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     
+    @IBAction func postButeen(_ sender: Any) {
+        let db = Firestore.firestore()
+        let selectedPost = self.selectedPost
+        if let us = usLebl.text,
+           let them = themLebl.text,
+           let winner = winnerNameLabel.text,
+           let userId = Auth.auth().currentUser?.uid{
+               var ref: DocumentReference? = nil
+               ref = db.collection("Game").addDocument(data: [
+                   "us": us,
+                   "them": them,
+                   "winner": winner,
+                   "userId":userId,
+                   "createdAt":selectedPost?.createdAt ?? FieldValue.serverTimestamp(),
+                   "updatedAt": FieldValue.serverTimestamp()
+               ]) { err in
+                   if let err = err {
+                       print("Error adding document: \(err)")
+                   } else {
+                       print("Document added with ID: \(ref!.documentID)")
+                   }
+               }
+           }
+        /*if let us = usLebl.text,
+           let image = imageGame.image,
+           let imageData = image.jpegData(compressionQuality: 0.75),
+           let them = themLebl.text,
+           let winner = winnerNameLabel.text,
+           let currentUser = Auth.auth().currentUser {
+//            Activity.showIndicator(parentView: self.view, childView: activityIndicator)
+//            ref.addDocument(data:)
+            var postId = ""
+            if let selectedPost = selectedPost {
+                postId = selectedPost.id
+            }else {
+                postId = "\(Firebase.UUID())"
+            }
+            let storageRef = Storage.storage().reference(withPath: "posts/\(currentUser.uid)/\(postId)")
+            let updloadMeta = StorageMetadata.init()
+            updloadMeta.contentType = "image/jpeg"
+            storageRef.putData(imageData, metadata: updloadMeta) { storageMeta, error in
+                if let error = error {
+                    print("Upload error",error.localizedDescription)
+                }
+                storageRef.downloadURL { url, error in
+                    var postData = [String:Any]()
+                    if url == url {
+                        let db = Firestore.firestore()
+                        let ref = db.collection("posts")
+                        if let selectedPost = self.selectedPost {
+                            postData = [
+                                "userId":selectedPost.user.id,
+                                "us":us,
+                                "them":them,
+                                "winner":winner,
+                                "createdAt":selectedPost.createdAt ?? FieldValue.serverTimestamp(),
+                                "updatedAt": FieldValue.serverTimestamp()
+                            ]
+                        }else {
+                            postData = [
+                                "userId":currentUser.uid,
+                                "us":us,
+                                "them":them,
+                                "winner":winner,
+                                "createdAt":FieldValue.serverTimestamp(),
+                                "updatedAt": FieldValue.serverTimestamp()
+                            ]
+                        }
+                        ref.document(postId).setData(postData) { error in
+                            if let error = error {
+                                print("FireStore Error",error.localizedDescription)
+                            }
+//                            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
+            }
+        }
+         */
+    }
     
 
     @IBAction func calculate(_ sender: Any) {
