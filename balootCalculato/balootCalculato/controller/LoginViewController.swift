@@ -1,10 +1,3 @@
-//
-//  LoginViewController.swift
-//  balootCalculato
-//
-//  Created by Ahmad Barqi on 21/05/1443 AH.
-//
-
 import UIKit
 import Firebase
 class LoginViewController: UIViewController {

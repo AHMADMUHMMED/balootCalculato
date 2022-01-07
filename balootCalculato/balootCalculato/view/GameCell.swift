@@ -25,9 +25,9 @@ class GameCell: UITableViewCell {
     }
     func configure(with post:Game) -> UITableViewCell {
         winner.text = post.winner
-        resultThem.text = post.id
+        resultThem.text = post.them
 //        postImageView.loadImageUsingCache(with: Game.imageUrl)
-        resultUs.text = post.user.name
+        resultUs.text = post.us
         userImage.loadImageUsingCache(with: post.user.imageUrl)
         return self
     }

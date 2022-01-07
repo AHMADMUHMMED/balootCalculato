@@ -11,18 +11,15 @@ import Firebase
 struct Game {
     var id = ""
     var winner = " "
-    var imageUrl = ""
     var us = ""
     var them = " "
     var user: User
     var createdAt: Timestamp?
     init(dict:[String:Any],id:String,user:User) {
         if let winner = dict["winner"] as? String,
-           let imageUrl = dict["imageUrl"] as? String,
            let them = dict["them"] as? String,
            let us = dict["us"] as? String,
             let createdAt = dict["createdAt"] as? Timestamp{
-            self.imageUrl = imageUrl
             self.createdAt = createdAt
             self.winner = winner
             self.us = us

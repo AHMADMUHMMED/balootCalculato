@@ -1,39 +1,19 @@
-//
-//  BalootCalculato.swift
-//  balootCalculato
-//
-//  Created by Ahmad Barqi on 23/05/1443 AH.
-//
-
-
 import UIKit
 import Firebase
-
-
 class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var selectedPost:Game?
     @IBOutlet weak var tableView: UITableView!
-
     @IBOutlet weak var winnerNameLabel: UILabel!
     @IBOutlet weak var usTextField: UITextField!
     @IBOutlet weak var themTextField: UITextField!
-    
     @IBOutlet weak var usLebl: UILabel!
     @IBOutlet weak var themLebl: UILabel!
     @IBOutlet weak var usResultBG: UIView!
     @IBOutlet weak var themResultBG: UIView!
-    
-    
     @IBOutlet weak var calcBut: UIButton!
     @IBOutlet weak var undoBut: UIButton!
     @IBOutlet weak var newGameBut: UIButton!
-    @IBOutlet weak var undoWidthConstrain: NSLayoutConstraint!
-    
     @IBOutlet weak var redoBut: UIButton!
-    var redoMode = false
-    
-    @IBOutlet weak var saveBut: UIButton!
-    
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var usTopLbl: UILabel!
     @IBOutlet weak var themTopLbl: UILabel!
@@ -43,7 +23,9 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var usResultLbl: UILabel!
     @IBOutlet weak var usCont: UIView!
     @IBOutlet weak var themResultLbl: UILabel!
-  @IBOutlet weak var themCont: UIView!
+    @IBOutlet weak var themCont: UIView!
+    @IBOutlet weak var distributerBtn: UIButton!
+    var redoMode = false
     var darkMode : Bool {
         get {
             return UserDefaults.standard.bool(forKey: "darkMode") ? true : false
@@ -51,27 +33,17 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         set {
             UserDefaults.standard.set(newValue, forKey: "darkMode")
             UserDefaults.standard.synchronize()
-
         }
     }
-    
-    
-    @IBOutlet weak var distributerBtn: UIButton!
-    
- 
     let calculator = gameReference.instance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-
         tableView.delegate = self
         tableView.dataSource = self
-        
         // register custome cells
         tableView.register(UINib.init(nibName: "ScoreCell", bundle: nil), forCellReuseIdentifier: "ScoreCell")
         tableView.register(UINib.init(nibName: "ResultCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
-        
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -79,29 +51,21 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.applyDarkMode()
         }
         updateUI()
-        
-        
-      
         // to select winner
-        if let player1 = usLebl.text, let player2 = themLebl.text {
+        if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
             if player1 > player2 {
-                winnerNameLabel.text = themTopLbl.text
+                winnerNameLabel.text = "لهم"
             }else{
-                winnerNameLabel.text = usTopLbl.text
+                winnerNameLabel.text = "لنا"
+                
             }
         }
-        
     }
-    
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calculator.result.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let score = calculator.result[indexPath.row]
-        
         if(score.type == .score) {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "ScoreCell", for: indexPath) as! ScoreCell
             cell.configure(score: score)
@@ -123,82 +87,23 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
            let them = themLebl.text,
            let winner = winnerNameLabel.text,
            let userId = Auth.auth().currentUser?.uid{
-               var ref: DocumentReference? = nil
-               ref = db.collection("Game").addDocument(data: [
-                   "us": us,
-                   "them": them,
-                   "winner": winner,
-                   "userId":userId,
-                   "createdAt":selectedPost?.createdAt ?? FieldValue.serverTimestamp(),
-                   "updatedAt": FieldValue.serverTimestamp()
-               ]) { err in
-                   if let err = err {
-                       print("Error adding document: \(err)")
-                   } else {
-                       print("Document added with ID: \(ref!.documentID)")
-                   }
-               }
-           }
-        /*if let us = usLebl.text,
-           let image = imageGame.image,
-           let imageData = image.jpegData(compressionQuality: 0.75),
-           let them = themLebl.text,
-           let winner = winnerNameLabel.text,
-           let currentUser = Auth.auth().currentUser {
-//            Activity.showIndicator(parentView: self.view, childView: activityIndicator)
-//            ref.addDocument(data:)
-            var postId = ""
-            if let selectedPost = selectedPost {
-                postId = selectedPost.id
-            }else {
-                postId = "\(Firebase.UUID())"
-            }
-            let storageRef = Storage.storage().reference(withPath: "posts/\(currentUser.uid)/\(postId)")
-            let updloadMeta = StorageMetadata.init()
-            updloadMeta.contentType = "image/jpeg"
-            storageRef.putData(imageData, metadata: updloadMeta) { storageMeta, error in
-                if let error = error {
-                    print("Upload error",error.localizedDescription)
-                }
-                storageRef.downloadURL { url, error in
-                    var postData = [String:Any]()
-                    if url == url {
-                        let db = Firestore.firestore()
-                        let ref = db.collection("posts")
-                        if let selectedPost = self.selectedPost {
-                            postData = [
-                                "userId":selectedPost.user.id,
-                                "us":us,
-                                "them":them,
-                                "winner":winner,
-                                "createdAt":selectedPost.createdAt ?? FieldValue.serverTimestamp(),
-                                "updatedAt": FieldValue.serverTimestamp()
-                            ]
-                        }else {
-                            postData = [
-                                "userId":currentUser.uid,
-                                "us":us,
-                                "them":them,
-                                "winner":winner,
-                                "createdAt":FieldValue.serverTimestamp(),
-                                "updatedAt": FieldValue.serverTimestamp()
-                            ]
-                        }
-                        ref.document(postId).setData(postData) { error in
-                            if let error = error {
-                                print("FireStore Error",error.localizedDescription)
-                            }
-//                            Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator)
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    }
+            var ref: DocumentReference? = nil
+            ref = db.collection("Game").addDocument(data: [
+                "us": us,
+                "them": them,
+                "winner": winner,
+                "userId":userId,
+                "createdAt":selectedPost?.createdAt ?? FieldValue.serverTimestamp(),
+                "updatedAt": FieldValue.serverTimestamp()
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
                 }
             }
         }
-         */
     }
-    
-
     @IBAction func calculate(_ sender: Any) {
         if((usTextField.text == nil || usTextField.text == "") && (themTextField.text == nil || themTextField.text == "")) {
             view.endEditing(true)
@@ -214,7 +119,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         self.updateUI()
         self.checkWinner()
     }
-
+    
     @IBAction func newSaka(_ sender: Any) {
         let alert = UIAlertController(title: "هل أنت متأكد من بداية صكة جديدة؟", message: nil, preferredStyle: .alert);
         let yesAction = UIAlertAction(title: "نعم", style: .cancel) { (action) in
@@ -242,31 +147,31 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func updateUI() {
         if (calculator.currentScore.them == 0){
-            themLebl.text = "صفر"
+            themLebl.text = "0"
         } else {
             themLebl.text = "\(calculator.currentScore.them)"
         }
         
         if (calculator.currentScore.us == 0){
-            usLebl.text = "صفر"
+            usLebl.text = "0"
         } else {
             usLebl.text = "\(calculator.currentScore.us)"
         }
         
         tableView.reloadData()
         if(calculator.result.count > 0){
-           let indexPath = IndexPath(row: self.calculator.result.count - 1, section: 0)
+            let indexPath = IndexPath(row: self.calculator.result.count - 1, section: 0)
             tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
         }
         if(calculator.hasRedo && !self.redoMode) {
             // go redo mode
-            undoWidthConstrain.constant = 100
+//            undoWidthConstrain.constant = 100
             undoBut.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0);
             redoBut.isHidden = false
             redoMode = true
         } else if(!calculator.hasRedo && self.redoMode) {
             // back to regular mode
-            undoWidthConstrain.constant = 80
+//            undoWidthConstrain.constant = 80
             undoBut.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
             redoBut.isHidden = true
             redoMode = false
@@ -346,7 +251,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         usTopLbl.textColor = UIColor(white: 155.0/255.0, alpha: 1.0)
         themTopLbl.textColor = UIColor(white: 155.0/255.0, alpha: 1.0)
         usTVLbl.textColor = UIColor(white: 166.0/255.0, alpha: 1.0)
-       themTVLbl.textColor = UIColor(white: 166.0/255.0, alpha: 1.0)
+        themTVLbl.textColor = UIColor(white: 166.0/255.0, alpha: 1.0)
         btnsBackgroundView.backgroundColor = UIColor(white: 0.0/255.0, alpha: 0.4)
         usResultLbl.textColor = UIColor(white: 255.0/255.0, alpha: 0.44)
         usResultBG.borderColor = UIColor(white: 255.0/255.0, alpha: 0.44)
@@ -361,11 +266,11 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         calcBut.setTitleColor(UIColor(white: 255.0/255.0, alpha: 1.0), for: .normal)
         usTopLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         themTopLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
-       usTVLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
+        usTVLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         themTVLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         btnsBackgroundView.backgroundColor = UIColor(white: 203.0/255.0, alpha: 0.7)
         usResultLbl.textColor = UIColor(white: 69.0/255.0, alpha: 0.6)
-       usResultBG.borderColor = UIColor(white: 69.0/255.0, alpha: 0.44)
+        usResultBG.borderColor = UIColor(white: 69.0/255.0, alpha: 0.44)
         themResultLbl.textColor = UIColor(red: 248.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 0.6)
         themResultBG.borderColor = UIColor(red: 248.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 0.44)
         usLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)

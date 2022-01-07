@@ -18,19 +18,17 @@ class LandingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        changetheLanguageBut.setTitle("changethelanguage".localiz, for: .normal)
+//        changetheLanguageBut.setTitle("changethelanguage".localiz, for: .normal)
         balootCalculatoLebl.text = "balootCalculato".localiz
         registerBut.setTitle("register".localiz, for: .normal)
         loginBut.setTitle("login".localiz, for: .normal)
-    }
     //    Translation الترجمة
 
-    @IBAction func changeTheLanguageBut(_ sender: Any) {
         
-        let currentLang = Locale.current.languageCode
-        let newLanguage = currentLang == "en" ? "ar" : "en"
-        UserDefaults.standard.setValue([newLanguage], forKey: "AppleLanguages")
-       exit(0)
+//        let currentLang = Locale.current.languageCode
+//        let newLanguage = currentLang == "en" ? "ar" : "en"
+//        UserDefaults.standard.setValue([newLanguage], forKey: "AppleLanguages")
+//       exit(0)
 
     }
     
