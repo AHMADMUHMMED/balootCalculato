@@ -21,6 +21,7 @@
 		7B2DC41527778CF7007A0B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2DC41327778CF7007A0B56 /* LaunchScreen.storyboard */; };
 		7B2F66562780D499002A958B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F66552780D499002A958B /* HomeViewController.swift */; };
 		7B3042AD278C0B63003D7570 /* BundleExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3042AC278C0B63003D7570 /* BundleExtention.swift */; };
+		7B3042AE278C2CD9003D7570 /* Localizble.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B52EAAC27788C9700D5D862 /* Localizble.strings */; };
 		7B4ADEB82785C116008648A5 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB62785C116008648A5 /* GameCell.swift */; };
 		7B4ADEB92785C116008648A5 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB72785C116008648A5 /* GameCell.xib */; };
 		7B52EA7C277795CB00D5D862 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EA7B277795CB00D5D862 /* LandingViewController.swift */; };
@@ -34,7 +35,6 @@
 		7B52EA9A2778663E00D5D862 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7B52EA992778663E00D5D862 /* FirebaseAuth */; };
 		7B52EA9C2778663E00D5D862 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7B52EA9B2778663E00D5D862 /* FirebaseFirestore */; };
 		7B52EA9E2778663E00D5D862 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7B52EA9D2778663E00D5D862 /* FirebaseStorage */; };
-		7B52EAAA27788C9700D5D862 /* Localizble.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B52EAAC27788C9700D5D862 /* Localizble.strings */; };
 		7B52EAB22779DED300D5D862 /* BalootCalculato.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EAB12779DED200D5D862 /* BalootCalculato.swift */; };
 /* End PBXBuildFile section */
 
@@ -239,10 +239,10 @@
 				7B2DC41527778CF7007A0B56 /* LaunchScreen.storyboard in Resources */,
 				7B2DC41227778CF7007A0B56 /* Assets.xcassets in Resources */,
 				7B0F4D32277C980700409A50 /* ResultCell.xib in Resources */,
+				7B3042AE278C2CD9003D7570 /* Localizble.strings in Resources */,
 				7B2DC41027778CF3007A0B56 /* Main.storyboard in Resources */,
 				7B52EA972778656800D5D862 /* GoogleService-Info.plist in Resources */,
 				7B0F4D2A277C7C4F00409A50 /* ScoreCell.xib in Resources */,
-				7B52EAAA27788C9700D5D862 /* Localizble.strings in Resources */,
 				7B4ADEB92785C116008648A5 /* GameCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

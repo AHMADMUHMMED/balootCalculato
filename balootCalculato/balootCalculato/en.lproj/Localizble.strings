@@ -29,3 +29,15 @@
 "calculator" = "calculator";
 "back" = "back";
 "newGame" = "new Game";
+"winner" = "We are the winners Do you want to start a new game??";
+"congratulations" = "congratulations for winning";
+"yes" = "Yes";
+"No" = "No";
+"winnerThem" = "They won the game.... Do you want to start a new game???";
+"hardLuck" = "hard Luck";
+"cancel" = "Cancel";
+"newGameNow" = "New Game";
+
+"exit" = "Exit";
+"save" = "save";
+

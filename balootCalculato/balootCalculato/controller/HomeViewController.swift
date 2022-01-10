@@ -20,7 +20,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
-            userImageView.circlerImage()
+            userImageView.layer.borderWidth = 3.0
+            //        زاوية ارتفاع حدود نصف قطرها
+            userImageView.layer.cornerRadius = userImageView.bounds.height / 2
+            userImageView.layer.masksToBounds = true
             userImageView.isUserInteractionEnabled = true
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(gotoUpdateUser))
             userImageView.addGestureRecognizer(tapGesture)
@@ -30,6 +33,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         getCurrentUserData()
         getPosts()
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "exit".localiz, style: .plain, target: nil, action: nil)
     }
     func getPosts() {
         let ref = Firestore.firestore()
@@ -140,7 +145,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scorllingValue = scrollView.contentOffset.y
-        if scorllingValue > -100 {
+        if scorllingValue > -80 {
             userImageView.alpha = 0
         }else {
             userImageView.alpha = 1

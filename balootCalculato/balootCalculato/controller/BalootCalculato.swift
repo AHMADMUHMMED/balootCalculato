@@ -48,6 +48,8 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         themTVLbl.text = "them".localiz
         themResultLbl.text = "them".localiz
         usResultLbl.text = "us".localiz
+        navigationItem.backBarButtonItem =
+        UIBarButtonItem(title: "save".localiz, style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
@@ -134,12 +136,12 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     @IBAction func newSaka(_ sender: Any) {
-        let alert = UIAlertController(title: "هل أنت متأكد من بداية صكة جديدة؟", message: nil, preferredStyle: .alert);
-        let yesAction = UIAlertAction(title: "نعم", style: .cancel) { (action) in
+        let alert = UIAlertController(title: "newGame1".localiz , message: nil, preferredStyle: .alert);
+        let yesAction = UIAlertAction(title: "yes".localiz, style: .default) { (action) in
             self.calculator.newGame()
             self.updateUI()
         }
-        let cancelAction = UIAlertAction(title: "إلغاء", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "No".localiz, style: .default, handler: nil)
         alert.addAction(yesAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil);
@@ -213,12 +215,12 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         if(usScore >= 152 && usScore > themScore){
-            let alert = UIAlertController(title: "مبروك الفوز", message: "قامت لكم.. هل تريد بدء صكة جديدة؟", preferredStyle: .alert)
-            let newSakaAction = UIAlertAction(title: "نعم", style: .cancel, handler: { (action) in
+            let alert = UIAlertController(title: "congratulations".localiz, message: "winner".localiz, preferredStyle: .alert)
+            let newSakaAction = UIAlertAction(title: "yes".localiz, style: .cancel, handler: { (action) in
                 self.calculator.newGame()
                 self.updateUI()
             })
-            let noAction = UIAlertAction(title: "لا", style: .default, handler: nil)
+            let noAction = UIAlertAction(title: "cancel".localiz, style: .default, handler: nil)
             
             alert.addAction(newSakaAction)
             alert.addAction(noAction)
@@ -227,12 +229,12 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
         
         if(themScore >= 152 && themScore > usScore) {
-            let alert = UIAlertController(title: "خيرها في غيرها", message: "قامت لهم.. هل تريد بدء صكة جديدة؟", preferredStyle: .alert)
-            let newSakaAction = UIAlertAction(title: "نعم", style: .cancel, handler: { (action) in
+            let alert = UIAlertController(title: "hardLuck".localiz, message:"winnerThem".localiz, preferredStyle: .alert)
+            let newSakaAction = UIAlertAction(title: "yes".localiz, style: .cancel, handler: { (action) in
                 self.calculator.newGame()
                 self.updateUI()
             })
-            let noAction = UIAlertAction(title: "لا", style: .default, handler: nil)
+            let noAction = UIAlertAction(title: "No".localiz, style: .default, handler: nil)
             
             alert.addAction(newSakaAction)
             alert.addAction(noAction)
