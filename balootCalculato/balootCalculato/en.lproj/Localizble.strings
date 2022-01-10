@@ -1,4 +1,6 @@
-/* 
+
+/*
+ 
   Localizble.strings
   balootCalculato
 
@@ -20,3 +22,10 @@
 "back" = "back";
 "new Game" = "new Game";
 "night" = "night";
+"Username" = "Username";
+"Update" = "Update";
+"them" = "Them";
+"us" = "Us";
+"calculator" = "calculator";
+"back" = "back";
+"newGame" = "new Game";

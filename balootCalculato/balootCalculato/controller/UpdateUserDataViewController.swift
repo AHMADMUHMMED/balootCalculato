@@ -4,6 +4,10 @@ import Firebase
 class UpdateUserDataViewController: UIViewController {
     var selectedGame:Game?
     let imagePickerController = UIImagePickerController()
+    @IBOutlet weak var userNameLebal: UILabel!
+    
+    @IBOutlet weak var updateBut: UIButton!
+    
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circlerImage()
@@ -18,12 +22,19 @@ class UpdateUserDataViewController: UIViewController {
         super.viewDidLoad()
         imagePickerController.delegate = self
         getCurrentUserData()
+        //    Translation الترجمة
+
+        userNameLebal.text = "Username".localiz
+        
+        updateBut.setTitle("Update".localiz, for: .normal)
+        
+
     }
     @IBAction func updateUserPressed(_ sender: Any) {
         if let image = userImageView.image,
-           let imageData = image.jpegData(compressionQuality: 0.75),
-           let name = userNameTextField.text,
+           let imageData = image .jpegData(compressionQuality: 0.75),
            let currentUserData = Auth.auth().currentUser,
+           let name = userNameTextField.text,
            let currentUserEmail = currentUserData.email {
             let currentUserId = currentUserData.uid
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
@@ -57,11 +68,12 @@ class UpdateUserDataViewController: UIViewController {
             }
         }
     }
+    
     func getCurrentUserData() {
         let refrance = Firestore.firestore()
         if let currentUser = Auth.auth().currentUser {
             let currentUserId = currentUser.uid
-            refrance.collection("users").document(currentUserId).getDocument { userSnapshot, error in
+            refrance.collection("users").document(currentUserId).addSnapshotListener { userSnapshot, error in
                 if let error = error {
                     print("error geting user Snapshot For User Name",error.localizedDescription)
                 }else{
@@ -70,7 +82,6 @@ class UpdateUserDataViewController: UIViewController {
                         if let userData = userData {
                             let currentUserData = User(dict: userData)
                             DispatchQueue.main.async {
-                                self.userNameTextField.text = currentUserData.name
                                 self.userImageView.loadImageUsingCache(with: currentUserData.imageUrl)
                             }
                         }else {
@@ -81,6 +92,7 @@ class UpdateUserDataViewController: UIViewController {
             }
         }
     }
+  
 }
 extension UpdateUserDataViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @objc func selectImage() {

@@ -17,12 +17,12 @@ class RegisterViewController: UIViewController {
             userImageView.addGestureRecognizer(tabGesture)
         }
     }
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameRegister: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var psswordTextField: UITextField!
     @IBOutlet weak var passwordResetTextField: UITextField!
     //    Translation الترجمة
-    @IBOutlet weak var nameLebl: UILabel!
     @IBOutlet weak var emailLebl: UILabel!
     @IBOutlet weak var passwordLebl: UILabel!
     @IBOutlet weak var passwordResetLebl: UILabel!
@@ -32,20 +32,21 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //    Translation الترجمة
-        nameLebl.text = "name".localiz
         emailLebl.text = "email".localiz
         passwordLebl.text = "password".localiz
         passwordResetLebl.text = "password reset".localiz
         orLebl.text = "or".localiz
         registerBut.setTitle("register".localiz, for: .normal)
         loginBut.setTitle("login".localiz, for: .normal)
+        nameRegister.text = "name".localiz
+        
         imagePickerController.delegate = self
     }
     @IBAction func byClickingRegister(_ sender: Any) {
         if let image = userImageView.image,
            let imageData = image .jpegData(compressionQuality: 0.75),
-           let name = nameTextField.text,
            let email = emailTextField.text,
+           let name = userNameTextField.text,
            let password = psswordTextField.text,
            let passwordReset = passwordResetTextField.text,
            password == passwordReset {
@@ -71,7 +72,7 @@ class RegisterViewController: UIViewController {
                                 let db = Firestore.firestore()
                                 let userData: [String:String] = [
                                     "id":authResult.user.uid,
-                                    "name":name,
+                                    "name": name,
                                     "email":email,
                                     "imageUrl":url.absoluteString
                                 ]

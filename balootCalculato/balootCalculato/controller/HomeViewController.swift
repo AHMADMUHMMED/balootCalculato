@@ -11,12 +11,13 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var gamesTableView: UITableView! {
         didSet {
-            gamesTableView.contentInset = UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0)
+            gamesTableView.contentInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
             gamesTableView.delegate = self
             gamesTableView.dataSource = self
             gamesTableView.register(UINib(nibName: "GameCell", bundle: nil), forCellReuseIdentifier: "GameCell")
         }
     }
+    @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var userImageView: UIImageView! {
         didSet {
             userImageView.circlerImage()
@@ -42,12 +43,10 @@ class HomeViewController: UIViewController {
                     let postData = diff.document.data()
                     switch diff.type {
                     case .added :
-                        
                         if let userId = postData["userId"] as? String {
                             ref.collection("users").document(userId).getDocument { userSnapshot, error in
                                 if let error = error {
                                     print("ERROR user Data",error.localizedDescription)
-                                    
                                 }
                                 if let userSnapshot = userSnapshot,
                                    let userData = userSnapshot.data(){
@@ -56,17 +55,12 @@ class HomeViewController: UIViewController {
                                     self.gamesTableView.beginUpdates()
                                     if snapshot.documentChanges.count != 1 {
                                         self.games.append(post)
-                                        
                                         self.gamesTableView.insertRows(at: [IndexPath(row:self.games.count - 1,section: 0)],with: .automatic)
                                     }else {
                                         self.games.insert(post,at:0)
-                                        
                                         self.gamesTableView.insertRows(at: [IndexPath(row: 0,section: 0)],with: .automatic)
                                     }
-                                    
                                     self.gamesTableView.endUpdates()
-                                    
-                                    
                                 }
                             }
                         }
@@ -76,22 +70,18 @@ class HomeViewController: UIViewController {
                            let updateIndex = self.games.firstIndex(where: {$0.id == postId}){
                             let newPost = Game(dict:postData, id: postId, user: currentPost.user)
                             self.games[updateIndex] = newPost
-                            
                             self.gamesTableView.beginUpdates()
                             self.gamesTableView.deleteRows(at: [IndexPath(row: updateIndex,section: 0)], with: .left)
                             self.gamesTableView.insertRows(at: [IndexPath(row: updateIndex,section: 0)],with: .left)
                             self.gamesTableView.endUpdates()
-                            
                         }
                     case .removed:
                         let postId = diff.document.documentID
                         if let deleteIndex = self.games.firstIndex(where: {$0.id == postId}){
                             self.games.remove(at: deleteIndex)
-                            
                             self.gamesTableView.beginUpdates()
                             self.gamesTableView.deleteRows(at: [IndexPath(row: deleteIndex,section: 0)], with: .automatic)
                             self.gamesTableView.endUpdates()
-                            
                         }
                     }
                 }
@@ -113,7 +103,7 @@ class HomeViewController: UIViewController {
         let refrance = Firestore.firestore()
         if let currentUser = Auth.auth().currentUser {
             let currentUserId = currentUser.uid
-            refrance.collection("users").document(currentUserId).getDocument { userSnapshot, error in
+            refrance.collection("users").document(currentUserId).addSnapshotListener { userSnapshot, error in
                 if let error = error {
                     print("error geting user Snapshot For User Name",error.localizedDescription)
                 }else{
@@ -123,6 +113,7 @@ class HomeViewController: UIViewController {
                             let currentUserData = User(dict: userData)
                             DispatchQueue.main.async {
                                 self.userImageView.loadImageUsingCache(with: currentUserData.imageUrl)
+                                self.currentUserName.text = currentUserData.name
                             }
                         }else {
                             print("User data not found or not the same !!!!!!!!!!!!!")
@@ -149,7 +140,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scorllingValue = scrollView.contentOffset.y
-        if scorllingValue > -80 {
+        if scorllingValue > -100 {
             userImageView.alpha = 0
         }else {
             userImageView.alpha = 1

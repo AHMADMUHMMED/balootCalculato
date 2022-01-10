@@ -13,7 +13,6 @@
 		7B0F4D2E277C94CE00409A50 /* UIView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F4D2D277C94CE00409A50 /* UIView-Ext.swift */; };
 		7B0F4D31277C980700409A50 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F4D2F277C980700409A50 /* ResultCell.swift */; };
 		7B0F4D32277C980700409A50 /* ResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0F4D30277C980700409A50 /* ResultCell.xib */; };
-		7B14BE4527871FB600CF2F58 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14BE4427871FB600CF2F58 /* ProfileViewController.swift */; };
 		7B14BE472787295F00CF2F58 /* UpdateUserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B14BE462787295F00CF2F58 /* UpdateUserDataViewController.swift */; };
 		7B2DC40927778CF3007A0B56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2DC40827778CF3007A0B56 /* AppDelegate.swift */; };
 		7B2DC40B27778CF3007A0B56 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2DC40A27778CF3007A0B56 /* SceneDelegate.swift */; };
@@ -21,6 +20,7 @@
 		7B2DC41227778CF7007A0B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B2DC41127778CF7007A0B56 /* Assets.xcassets */; };
 		7B2DC41527778CF7007A0B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B2DC41327778CF7007A0B56 /* LaunchScreen.storyboard */; };
 		7B2F66562780D499002A958B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B2F66552780D499002A958B /* HomeViewController.swift */; };
+		7B3042AD278C0B63003D7570 /* BundleExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B3042AC278C0B63003D7570 /* BundleExtention.swift */; };
 		7B4ADEB82785C116008648A5 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB62785C116008648A5 /* GameCell.swift */; };
 		7B4ADEB92785C116008648A5 /* GameCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4ADEB72785C116008648A5 /* GameCell.xib */; };
 		7B52EA7C277795CB00D5D862 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B52EA7B277795CB00D5D862 /* LandingViewController.swift */; };
@@ -45,7 +45,6 @@
 		7B0F4D2D277C94CE00409A50 /* UIView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView-Ext.swift"; sourceTree = "<group>"; };
 		7B0F4D2F277C980700409A50 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		7B0F4D30277C980700409A50 /* ResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCell.xib; sourceTree = "<group>"; };
-		7B14BE4427871FB600CF2F58 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		7B14BE462787295F00CF2F58 /* UpdateUserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserDataViewController.swift; sourceTree = "<group>"; };
 		7B2DC40527778CF3007A0B56 /* balootCalculato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = balootCalculato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B2DC40827778CF3007A0B56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		7B2DC41427778CF7007A0B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7B2DC41627778CF7007A0B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B2F66552780D499002A958B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7B3042AC278C0B63003D7570 /* BundleExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtention.swift; sourceTree = "<group>"; };
 		7B4ADEB62785C116008648A5 /* GameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		7B4ADEB72785C116008648A5 /* GameCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCell.xib; sourceTree = "<group>"; };
 		7B52EA7B277795CB00D5D862 /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -150,12 +150,12 @@
 			isa = PBXGroup;
 			children = (
 				7B52EA7B277795CB00D5D862 /* LandingViewController.swift */,
-				7B14BE4427871FB600CF2F58 /* ProfileViewController.swift */,
 				7B52EA7D277795EA00D5D862 /* RegisterViewController.swift */,
 				7B52EA7F2777960600D5D862 /* LoginViewController.swift */,
 				7B52EAB12779DED200D5D862 /* BalootCalculato.swift */,
 				7B14BE462787295F00CF2F58 /* UpdateUserDataViewController.swift */,
 				7B2F66552780D499002A958B /* HomeViewController.swift */,
+				7B3042AC278C0B63003D7570 /* BundleExtention.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -261,7 +261,6 @@
 				7B52EA802777960600D5D862 /* LoginViewController.swift in Sources */,
 				7B0F4D2C277C8CE200409A50 /* Gamereference.swift in Sources */,
 				7B2F66562780D499002A958B /* HomeViewController.swift in Sources */,
-				7B14BE4527871FB600CF2F58 /* ProfileViewController.swift in Sources */,
 				7B52EA7E277795EA00D5D862 /* RegisterViewController.swift in Sources */,
 				7B2DC40927778CF3007A0B56 /* AppDelegate.swift in Sources */,
 				7B14BE472787295F00CF2F58 /* UpdateUserDataViewController.swift in Sources */,
@@ -271,6 +270,7 @@
 				7B52EA952778630800D5D862 /* Activity.swift in Sources */,
 				7B2DC40B27778CF3007A0B56 /* SceneDelegate.swift in Sources */,
 				7B0F4D31277C980700409A50 /* ResultCell.swift in Sources */,
+				7B3042AD278C0B63003D7570 /* BundleExtention.swift in Sources */,
 				7B52EA9027785F1700D5D862 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

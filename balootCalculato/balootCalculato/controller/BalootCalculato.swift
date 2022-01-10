@@ -38,6 +38,16 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     let calculator = gameReference.instance
     override func viewDidLoad() {
         super.viewDidLoad()
+        //    Translation الترجمة
+        calcBut.setTitle("calculator".localiz, for: .normal)
+        undoBut.setTitle("back".localiz, for: .normal)
+        newGameBut.setTitle("newGame".localiz, for: .normal)
+        usTopLbl.text = "us".localiz
+        themTopLbl.text = "them".localiz
+        usTVLbl.text = "us".localiz
+        themTVLbl.text = "them".localiz
+        themResultLbl.text = "them".localiz
+        usResultLbl.text = "us".localiz
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,18 +59,21 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         view.addGestureRecognizer(tap)
         if(self.darkMode){
             self.applyDarkMode()
+            
+           
         }
         updateUI()
         // to select winner
         if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
             if player1 > player2 {
                 winnerNameLabel.text = "لهم"
-            }else{
-                winnerNameLabel.text = "لنا"
                 
-            }
+}else{
+    winnerNameLabel.text = "لنا"
         }
-    }
+           }
+}
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calculator.result.count
     }
