@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B0BD562278EE9740088CD1E /* SunAndJudgmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BD561278EE9740088CD1E /* SunAndJudgmentController.swift */; };
+		7B0BD564278EEE690088CD1E /* SunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BD563278EEE690088CD1E /* SunViewController.swift */; };
+		7B0BD566278EF27F0088CD1E /* JudgmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0BD565278EF27F0088CD1E /* JudgmentViewController.swift */; };
 		7B0F4D29277C7C4F00409A50 /* ScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F4D27277C7C4F00409A50 /* ScoreCell.swift */; };
 		7B0F4D2A277C7C4F00409A50 /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0F4D28277C7C4F00409A50 /* ScoreCell.xib */; };
 		7B0F4D2C277C8CE200409A50 /* Gamereference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B0F4D2B277C8CE200409A50 /* Gamereference.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B0BD561278EE9740088CD1E /* SunAndJudgmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunAndJudgmentController.swift; sourceTree = "<group>"; };
+		7B0BD563278EEE690088CD1E /* SunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunViewController.swift; sourceTree = "<group>"; };
+		7B0BD565278EF27F0088CD1E /* JudgmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudgmentViewController.swift; sourceTree = "<group>"; };
 		7B0F4D27277C7C4F00409A50 /* ScoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreCell.swift; sourceTree = "<group>"; };
 		7B0F4D28277C7C4F00409A50 /* ScoreCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		7B0F4D2B277C8CE200409A50 /* Gamereference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamereference.swift; sourceTree = "<group>"; };
@@ -156,6 +162,9 @@
 				7B14BE462787295F00CF2F58 /* UpdateUserDataViewController.swift */,
 				7B2F66552780D499002A958B /* HomeViewController.swift */,
 				7B3042AC278C0B63003D7570 /* BundleExtention.swift */,
+				7B0BD561278EE9740088CD1E /* SunAndJudgmentController.swift */,
+				7B0BD563278EEE690088CD1E /* SunViewController.swift */,
+				7B0BD565278EF27F0088CD1E /* JudgmentViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -257,14 +266,17 @@
 				7B0F4D2E277C94CE00409A50 /* UIView-Ext.swift in Sources */,
 				7B52EA93277862F400D5D862 /* ImageView.swift in Sources */,
 				7B52EAB22779DED300D5D862 /* BalootCalculato.swift in Sources */,
+				7B0BD564278EEE690088CD1E /* SunViewController.swift in Sources */,
 				7B4ADEB82785C116008648A5 /* GameCell.swift in Sources */,
 				7B52EA802777960600D5D862 /* LoginViewController.swift in Sources */,
 				7B0F4D2C277C8CE200409A50 /* Gamereference.swift in Sources */,
 				7B2F66562780D499002A958B /* HomeViewController.swift in Sources */,
+				7B0BD566278EF27F0088CD1E /* JudgmentViewController.swift in Sources */,
 				7B52EA7E277795EA00D5D862 /* RegisterViewController.swift in Sources */,
 				7B2DC40927778CF3007A0B56 /* AppDelegate.swift in Sources */,
 				7B14BE472787295F00CF2F58 /* UpdateUserDataViewController.swift in Sources */,
 				7B0F4D29277C7C4F00409A50 /* ScoreCell.swift in Sources */,
+				7B0BD562278EE9740088CD1E /* SunAndJudgmentController.swift in Sources */,
 				7B52EA8E27785F0800D5D862 /* Game.swift in Sources */,
 				7B52EA7C277795CB00D5D862 /* LandingViewController.swift in Sources */,
 				7B52EA952778630800D5D862 /* Activity.swift in Sources */,

@@ -25,6 +25,8 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var themResultLbl: UILabel!
     @IBOutlet weak var themCont: UIView!
     @IBOutlet weak var distributerBtn: UIButton!
+    
+    
     var redoMode = false
     var darkMode : Bool {
         get {
@@ -185,7 +187,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
             redoBut.isHidden = false
             redoMode = true
         } else if(!calculator.hasRedo && self.redoMode) {
-            // back to regular mode
+//         back to regular mode
 //            undoWidthConstrain.constant = 80
             undoBut.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0);
             redoBut.isHidden = true
@@ -291,17 +293,17 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         usLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
         themLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
     }
-    @IBAction func darkModeToggle(_ sender: Any) {
-        if(!self.darkMode) {
-            // to dark mode
-            applyDarkMode()
-            darkMode = true
-        } else {
-            // to regular mode
-            applyRegularMode()
-            darkMode = false
-        }
-    }
+//    @IBAction func darkModeToggle(_ sender: Any) {
+//        if(!self.darkMode) {
+//            // to dark mode
+//            applyDarkMode()
+//            darkMode = true
+//        } else {
+//            // to regular mode
+//            applyRegularMode()
+//            darkMode = false
+//        }
+//    }
     
     
     @IBAction func changeDistributer(_ sender: Any) {

@@ -40,4 +40,15 @@
 
 "exit" = "Exit";
 "save" = "save";
-
+"sun" = "Baloot sun";
+"judgment" = "Baloot Judgment";
+"eleven" = "eleven";
+"ten" = "ten";
+"four" = "four";
+"three" = "three";
+"two" = "two";
+"zero" = "zero";
+"fourteen" = "fourteen";
+"twenty" = "twenty";
+"balootCalculator" = "baloot Calculato";
+"calculationmethod" = "calculation method";
