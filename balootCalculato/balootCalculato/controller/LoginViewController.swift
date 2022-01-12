@@ -1,6 +1,6 @@
 import UIKit
 import Firebase
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var registerBut: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailTextField.delegate = self
         //    Translation الترجمة
 
         emailLabel.text = "email".localiz
@@ -22,7 +22,16 @@ class LoginViewController: UIViewController {
         registerBut.setTitle("register".localiz, for: .normal)
         
     }
-    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        }else if textField == passwordTextField {
+            passwordTextField.becomeFirstResponder()
+        }else {
+
+        }
+        return true
+    }
     
     @IBAction func handleLogin(_ sender: Any) {
     if let email = emailTextField.text,

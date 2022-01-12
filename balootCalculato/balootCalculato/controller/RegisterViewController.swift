@@ -1,6 +1,6 @@
 import UIKit
 import Firebase
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var userImageView: UIImageView!{
@@ -31,8 +31,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var loginBut: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        userNameTextField.delegate = self
+        passwordResetTextField.delegate = self
+        psswordTextField.delegate = self
+        
         //    Translation الترجمة
+
+        
         emailLebl.text = "email".localiz
+        
         passwordLebl.text = "password".localiz
         passwordResetLebl.text = "password reset".localiz
         orLebl.text = "or".localiz
@@ -42,6 +51,21 @@ class RegisterViewController: UIViewController {
         
         imagePickerController.delegate = self
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == userNameTextField {
+       emailTextField.becomeFirstResponder()
+        }else if textField == emailTextField{
+            psswordTextField.becomeFirstResponder()
+        }else if textField == psswordTextField{
+            passwordResetTextField.becomeFirstResponder()
+            
+        
+    }
+    return true
+
+}
     @IBAction func byClickingRegister(_ sender: Any) {
         if let image = userImageView.image,
            let imageData = image .jpegData(compressionQuality: 0.75),

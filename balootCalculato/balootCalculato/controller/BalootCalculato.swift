@@ -68,10 +68,10 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         // to select winner
         if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
             if player1 > player2 {
-                winnerNameLabel.text = "لهم"
+                winnerNameLabel.text = "them".localiz
                 
 }else{
-    winnerNameLabel.text = "لنا"
+    winnerNameLabel.text = "us".localiz
         }
            }
 }
