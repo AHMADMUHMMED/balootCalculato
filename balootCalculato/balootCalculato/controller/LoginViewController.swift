@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 class LoginViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var erorrInLoginLebal: UILabel!
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -38,6 +39,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
            let password = passwordTextField.text {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+                if error == nil {
+                print("Login succesfully")
+                }else{
+                print(error?.localizedDescription as Any)
+                    Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator); self.erorrInLoginLebal.text = error?.localizedDescription
+                }
                 if let _ = authResult {
                     if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
                         vc.modalPresentationStyle = .fullScreen

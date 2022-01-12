@@ -1,6 +1,7 @@
 import UIKit
 import Firebase
 class RegisterViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var erorrInRegisterLebal: UILabel!
     let imagePickerController = UIImagePickerController()
     var activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var userImageView: UIImageView!{
@@ -76,6 +77,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
            password == passwordReset {
             Activity.showIndicator(parentView: self.view, childView: activityIndicator)
             Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error = error{
+                self.erorrInRegisterLebal.text = error.localizedDescription
+                Activity.removeIndicator(parentView: self.view, childView: self.activityIndicator) }
                 if let error = error {
                     print("Registration Auth Error",error.localizedDescription)
                 }
@@ -154,4 +158,5 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+  
 }
