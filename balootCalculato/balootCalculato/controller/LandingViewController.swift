@@ -10,8 +10,7 @@ import Firebase
 class LandingViewController: UIViewController {
     //    Translation الترجمة
 
-    @IBOutlet weak var changetheLanguageBut: UIButton!
-    
+
     @IBOutlet weak var balootCalculatoLebl: UILabel!
     @IBOutlet weak var registerBut: UIButton!
     @IBOutlet weak var loginBut: UIButton!

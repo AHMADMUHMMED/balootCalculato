@@ -28,15 +28,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     var redoMode = false
-    var darkMode : Bool {
-        get {
-            return UserDefaults.standard.bool(forKey: "darkMode") ? true : false
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: "darkMode")
-            UserDefaults.standard.synchronize()
-        }
-    }
+
     let calculator = gameReference.instance
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,17 +53,12 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        if(self.darkMode){
-            self.applyDarkMode()
-            
-           
-        }
+
         updateUI()
         // to select winner
         if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
             if player1 > player2 {
                 winnerNameLabel.text = "them".localiz
-                
 }else{
     winnerNameLabel.text = "us".localiz
         }
@@ -120,6 +107,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
                 }
             }
         }
+        
     }
     @IBAction func calculate(_ sender: Any) {
         if((usTextField.text == nil || usTextField.text == "") && (themTextField.text == nil || themTextField.text == "")) {
@@ -293,18 +281,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         usLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
         themLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
     }
-//    @IBAction func darkModeToggle(_ sender: Any) {
-//        if(!self.darkMode) {
-//            // to dark mode
-//            applyDarkMode()
-//            darkMode = true
-//        } else {
-//            // to regular mode
-//            applyRegularMode()
-//            darkMode = false
-//        }
-//    }
-    
+
     
     @IBAction func changeDistributer(_ sender: Any) {
         calculator.moveDistributer()

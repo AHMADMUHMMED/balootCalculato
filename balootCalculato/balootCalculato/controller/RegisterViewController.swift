@@ -61,12 +61,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             psswordTextField.becomeFirstResponder()
         }else if textField == psswordTextField{
             passwordResetTextField.becomeFirstResponder()
+        
+        }else{
+            
             
         
     }
     return true
 
 }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     @IBAction func byClickingRegister(_ sender: Any) {
         if let image = userImageView.image,
            let imageData = image .jpegData(compressionQuality: 0.75),

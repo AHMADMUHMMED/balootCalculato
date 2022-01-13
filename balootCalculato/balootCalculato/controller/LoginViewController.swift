@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
+        passwordTextField.delegate = self
         //    Translation الترجمة
 
         emailLabel.text = "email".localiz
@@ -23,15 +24,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         registerBut.setTitle("register".localiz, for: .normal)
         
     }
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         if textField == emailTextField {
             passwordTextField.becomeFirstResponder()
-        }else if textField == passwordTextField {
-            passwordTextField.becomeFirstResponder()
-        }else {
+        }else{
+    }
+    return true
 
-        }
-        return true
+}
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     @IBAction func handleLogin(_ sender: Any) {
