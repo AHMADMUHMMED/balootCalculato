@@ -4,14 +4,12 @@
 //
 //  Created by Ahmad Barqi on 25/05/1443 AH.
 //
-import Foundation
-import Darwin
 
 enum ScoreType {
     case score
     case result
 }
-
+//الموزع
 enum DistributerTurn {
     case me
     case right

@@ -265,19 +265,25 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         usLebl.textColor = UIColor(red: 226.0/255.0, green: 222.0/255.0, blue: 222.0/255.0, alpha: 1.0)
         themLebl.textColor = UIColor(red: 226.0/255.0, green: 222.0/255.0, blue: 222.0/255.0, alpha: 1.0)
     }
+//    الوضع العادي
     func applyRegularMode(){
         backgroundImg.image = #imageLiteral(resourceName: "Dark Background")
         calcBut.backgroundColor = UIColor(white: 53.0/255.0, alpha: 1.0)
+//
         calcBut.setTitleColor(UIColor(white: 255.0/255.0, alpha: 1.0), for: .normal)
         usTopLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         themTopLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         usTVLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
         themTVLbl.textColor = UIColor(white: 74.0/255.0, alpha: 1.0)
+//        لون الخلفية اللي بين صكة جديدة و التراجع
         btnsBackgroundView.backgroundColor = UIColor(white: 203.0/255.0, alpha: 0.7)
-        usResultLbl.textColor = UIColor(white: 69.0/255.0, alpha: 0.6)
+        
+//        لون الحدود
         usResultBG.borderColor = UIColor(white: 69.0/255.0, alpha: 0.44)
-        themResultLbl.textColor = UIColor(red: 248.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 0.6)
         themResultBG.borderColor = UIColor(red: 248.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 0.44)
+//        لون الخط
+        usResultLbl.textColor = UIColor(white: 69.0/255.0, alpha: 0.6)
+        themResultLbl.textColor = UIColor(red: 248.0/255.0, green: 89.0/255.0, blue: 89.0/255.0, alpha: 0.6)
         usLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
         themLebl.textColor = UIColor(white: 0.0/255.0, alpha: 0.6)
     }
