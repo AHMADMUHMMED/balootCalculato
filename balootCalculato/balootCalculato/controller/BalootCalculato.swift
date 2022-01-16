@@ -54,15 +54,7 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
 
-        updateUI()
-        // to select winner
-        if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
-            if player1 > player2 {
-                winnerNameLabel.text = "them".localiz
-}else{
-    winnerNameLabel.text = "us".localiz
-        }
-           }
+     
 }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,6 +77,15 @@ class BalootCalculato: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     
     @IBAction func postButeen(_ sender: Any) {
+        if let player1 = Int(usLebl.text!), let player2 = Int(themLebl.text!) {
+            if player1 < player2 {
+                winnerNameLabel.text = "them".localiz
+}else{
+    winnerNameLabel.text = "us".localiz
+        }
+           }
+
+
         let db = Firestore.firestore()
         let selectedPost = self.selectedPost
         if let us = usLebl.text,
